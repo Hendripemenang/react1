@@ -1,25 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+function App(){
+    const title='Blog Post'
+    const body='this is my blog post'
+    const comment =[
+        {id:1, text:'Coment one'},
+        {id:2, text:'Coment two'},
+        {id:3, text:'Coment three'},
+    ]
+    const loading=false
+    const showCommment =true
+    if(loading) return <h1>loading...</h1>
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const commentBlock =(
+        <div className="comment">
+            <h3>Coments({comment.length}) </h3>
+            <ul>
+                {comment.map((comment,index)=>
+                    (<li key={index}>{comment.text}</li>))}
+            </ul>
+        </div>
+    )
+
+    return (
+        <div className='container'>
+            <h1>{title.toUpperCase()}</h1>
+            <p>{body}</p>
+            {showCommment && (commentBlock) }
+
+
+
+        </div>
+
+
+
+    )
 }
 
-export default App;
+export default App
